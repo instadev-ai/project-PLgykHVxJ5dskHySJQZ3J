@@ -81,7 +81,7 @@ const ContactForm = () => {
 
   return (
     <div className="max-w-md w-full mx-auto p-6 bg-card rounded-lg shadow-sm border">
-      <h2 className="text-2xl font-bold mb-6 text-center">Contact Us</h2>
+      <h2 className="text-2xl font-bold mb-6 text-center">Itay's Form</h2>
       
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
