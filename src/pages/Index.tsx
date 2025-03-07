@@ -25,6 +25,27 @@ const Index = () => {
         <div className="absolute top-20 left-20 w-64 h-64 rounded-full bg-gradient-to-r from-purple-600 to-blue-500 opacity-20 blur-3xl animate-blob"></div>
         <div className="absolute top-40 right-20 w-80 h-80 rounded-full bg-gradient-to-r from-pink-600 to-purple-600 opacity-20 blur-3xl animate-blob animation-delay-2000"></div>
         <div className="absolute bottom-20 left-1/3 w-72 h-72 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 opacity-20 blur-3xl animate-blob animation-delay-4000"></div>
+        
+        {/* Additional Decorative Elements */}
+        <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-purple-500 opacity-10 rotate-45 animate-float"></div>
+        <div className="absolute bottom-1/3 right-1/3 w-24 h-24 rounded-lg bg-blue-500 opacity-10 rotate-12 animate-float animation-delay-1000"></div>
+        <div className="absolute top-1/2 left-1/4 w-40 h-40 rounded-full border-2 border-purple-500 opacity-10 animate-spin-slow"></div>
+        
+        {/* Particles */}
+        <div className="absolute inset-0">
+          {Array.from({ length: 20 }).map((_, i) => (
+            <div 
+              key={i}
+              className="absolute w-1 h-1 bg-white rounded-full animate-twinkle"
+              style={{
+                top: `${Math.random() * 100}%`,
+                left: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+                opacity: Math.random() * 0.5 + 0.2
+              }}
+            ></div>
+          ))}
+        </div>
       </div>
 
       {/* Hero Section */}
@@ -286,6 +307,10 @@ const Index = () => {
             animation-delay: 0.5s;
           }
           
+          .animation-delay-1000 {
+            animation-delay: 1s;
+          }
+          
           @keyframes fade-in-up {
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
@@ -311,6 +336,35 @@ const Index = () => {
           
           .animate-fade-in-left {
             animation: fade-in-left 0.6s ease-out forwards;
+          }
+          
+          @keyframes float {
+            0% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0); }
+          }
+          
+          .animate-float {
+            animation: float 6s ease-in-out infinite;
+          }
+          
+          @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
+          
+          .animate-spin-slow {
+            animation: spin-slow 20s linear infinite;
+          }
+          
+          @keyframes twinkle {
+            0% { opacity: 0.2; }
+            50% { opacity: 0.8; }
+            100% { opacity: 0.2; }
+          }
+          
+          .animate-twinkle {
+            animation: twinkle 3s ease-in-out infinite;
           }
           
           .bg-grid-pattern {
