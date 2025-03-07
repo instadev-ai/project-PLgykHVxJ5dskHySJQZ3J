@@ -105,6 +105,33 @@ export type Database = {
           },
         ]
       }
+      contact_submissions: {
+        Row: {
+          created_at: string | null
+          email: string
+          id: number
+          message: string
+          name: string
+          status: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          id?: number
+          message: string
+          name: string
+          status?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          id?: number
+          message?: string
+          name?: string
+          status?: string | null
+        }
+        Relationships: []
+      }
       lessons: {
         Row: {
           content: string
