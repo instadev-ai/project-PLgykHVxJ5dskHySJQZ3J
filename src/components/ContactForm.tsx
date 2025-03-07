@@ -15,6 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { toast } from "@/hooks/use-toast";
+import { supabase } from "@/lib/supabase";
 
 // Define the form schema with validation
 const formSchema = z.object({
@@ -43,8 +44,18 @@ const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call with timeout
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      // Submit to Supabase
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([
+          { 
+            name: data.name,
+            email: data.email,
+            message: data.message
+          }
+        ]);
+      
+      if (error) throw error;
       
       // Show success message
       toast({
@@ -55,6 +66,8 @@ const ContactForm = () => {
       // Reset the form
       form.reset();
     } catch (error) {
+      console.error("Error submitting form:", error);
+      
       // Show error message
       toast({
         title: "Something went wrong",
